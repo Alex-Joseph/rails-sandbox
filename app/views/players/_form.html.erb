@@ -1,0 +1,36 @@
+<%= form_for @player do |form| %>
+ 
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@player.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @player.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+ 
+  <p>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+ 
+  <p>
+    <%= form.label :born_on %><br>
+    <%= date_field("player", 'born_on', value: @player.born_on, min: 45.years.ago, max: 18.years.ago) %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

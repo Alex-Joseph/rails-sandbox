@@ -1,0 +1,2 @@
+class LeafsController < ApplicationController
+end

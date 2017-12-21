@@ -1,0 +1,18 @@
+<p>
+    <strong>First Name:</strong>
+    <%= @player.first_name %>
+</p>
+
+<p>
+    <strong>Last Name:</strong>
+    <%= @player.last_name %>
+</p>
+
+<p>
+    <strong>Birth Date:</strong>
+    <%= @player.born_on %>
+</p>
+    
+<%= link_to "Back", players_path %>
+<%= link_to "Edit", edit_player_path(@player) %>
+<%= link_to 'Home', welcome_index_path %>

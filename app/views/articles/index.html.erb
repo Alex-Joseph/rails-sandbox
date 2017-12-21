@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+  <script>
+    
+    var geocoder;
+    var map;
+    function initialize() {
+      geocoder = new google.maps.Geocoder();
+      var latlng = new google.maps.LatLng(43.7264709,-79.4015859);
+      var mapOptions = {
+        zoom: 10,
+        center: latlng
+      }
+      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      address = ["456 Donlands Ave", "446 Symington Ave", "88 Osler St", "38 Morse st, Toronto"]
+      
+      address.forEach(function(a, i) {
+        geocoder.geocode(
+        { 'address': a }, function(results, status) {
+          if (status == 'OK') {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              label: `A${i+1}`
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        })
+      });
+    }
+    
+  </script> 
+
+<body onload="initialize()">
+ 
+ <div id="map"></div>
+ 
+</body>
+
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      
+      #map {
+        margin: auto;
+        height: 400px;
+        width: 400px;
+      }
+      
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxX_l1SR0uLAatjWxHq8RLifeSOb6cBEE"
+    async defer></script>
+  </body>
+</html>
+
+<h1>Listing articles</h1>
+
+<%= link_to "New article", new_article_path %>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+    </tr>
+    
+    <% @articles.each do |article| %>
+    <tr>
+        <td><%= article.title %></td>
+        <td><%= article.text %></td>
+        <td><%= link_to "Show", article_path(article) %></td>
+        <td><%= link_to "Edit", edit_article_path(article) %></td>
+        <td><%= link_to "Delete", article_path(article), 
+                method: :delete, 
+                data: { confirm: "Are you sure?" } %></td>
+    </tr>
+    <% end %>
+</table>

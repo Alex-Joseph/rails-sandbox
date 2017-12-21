@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <header class="navbar  navbar-inverse">
+    <div class="navbar-class">
+    <div class="container">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <ul class="topnav">
+          <% if current_user %>
+            <li><%= link_to 'My Blog', controller: 'articles' %></li>
+            <li><%= link_to 'Add Players', controller: 'players' %></li>
+            <li><%= link_to 'My Leafs', leafs_path %></li>
+            <li><%=link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            <li style="float:right"><a class="active">Hi <%= current_user.email %></a></li>
+          <% else %>
+            <li><%=link_to "Sign Up", new_user_registration_path %></li>
+            <li><%=link_to "Sign In", new_user_session_path %></li>
+            
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+  </header>
+    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  
+  <div id='main-container'>
+    <%= yield %>  
+  </div>
+  
+</body>
+</html>
