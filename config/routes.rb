@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
+  namespace :users do
+    resources :profiles
+  end
+
   get 'leafs' => 'players#leafs'
-  
-  get 'welcome/index'
-  
+
   resources :articles do
     resources :comments
   end
-  
+
   resources :players
-  
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

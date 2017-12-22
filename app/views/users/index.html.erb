@@ -1,32 +1,16 @@
-<p class='notice'><%= notice %></p>
-<p class='alert'><%= alert %></p>
-
-<% if @users.empty? %>
-
-<h2>No users</h2>
-
-<% else %>
-
-<table>
-    <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Phone</th>
-    </tr>
-    
-    <% @users.each do |u| %>
-    <tr>
-        <td><%= u.username %></td>
-        <td><%= u.email %></td>
-        <td><%= u.phone %></td>
-        <td><%= link_to "Delete", user_path(u.id), 
-        method: :delete, 
-        data: { confirm: "Are you sure?" } %></td>
-    </tr>
-    <% end %>
-</table>
-
-<% end %>
-
-<%= link_to 'Home', welcome_index_path %>
+<div class="container">
+  <div class="row">
+    <h3>Users</h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <%= render user %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

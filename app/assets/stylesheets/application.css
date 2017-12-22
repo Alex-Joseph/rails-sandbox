@@ -17,7 +17,10 @@
 #main-container {
     margin-top: 50px;
 }
-
+.alert {
+  margin-top: 13px;
+}
+/* Leafs table */
 #leafs {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -41,6 +44,10 @@
     background-color: #003777;
     color: white;
 }
+/* DEVISE FORM */
+.devise_form {
+    padding: 10% 30%;
+}
 
 /*NAVBAR*/
 
@@ -52,6 +59,7 @@ ul.topnav {
     background-color: #333;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -73,6 +81,6 @@ ul.topnav li active {background-color: #4CAF50;}
 ul.topnav li.right {float: right;}
 
 @media screen and (max-width: 600px){
-    ul.topnav li.right, 
+    ul.topnav li.right,
     ul.topnav li {float: none;}
 }

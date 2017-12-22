@@ -1,3 +1,5 @@
+<div class='devise_form'>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -21,9 +23,22 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.fields_for :profile do |profile_form| %>
+      <h2><%= profile_form.label :first_name %></h2>
+      <p><%= profile_form.text_field :first_name %></p>
+
+      <h2><%= profile_form.label :last_name %></h2>
+      <p><%= profile_form.text_field :last_name %></p>
+    <% end %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
