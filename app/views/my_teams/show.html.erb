@@ -1,0 +1,32 @@
+
+<p>
+  <strong>Team:</strong>
+  <%= @my_team.team_id.split("-")[0] %>
+</p>
+
+<p>
+  <strong>League:</strong>
+  <%= @my_team.league %>
+</p>
+
+<div class="container">
+  <table class='leafs'>
+      <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Jersey Number</th>
+          <th>Position</th>
+      </tr>
+  <% @roster.map do |p| %>
+    <% @player_id = p["person"]['id'] %>
+    <% @player_name = p["person"]['fullName'] %>
+      <tr>
+          <td><%= image_tag("https://nhl.bamcontent.com/images/headshots/current/60x60/#{@player_id}.jpg", :class => 'leaf-img') %></td>
+          <td><%= link_to @player_name, controller: "players", action: "show", id: "#{@player_name}-#{@player_id}" %></td>
+          <td><%= p['jerseyNumber'] %></td>
+          <td><%= p['position']["name"] %></td>
+      </tr>
+      <% end %>
+  </table>
+
+<p class="mt-3"><%= link_to 'Back', my_teams_path %></p>

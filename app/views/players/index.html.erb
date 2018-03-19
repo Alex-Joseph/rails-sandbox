@@ -9,12 +9,13 @@
 
 <% else %>
 
-<table>
+<table class="table">
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Birth Date</th>
-        <th>Age</th>
+        <th scope="col" class="text-center">First Name</th>
+        <th scope="col" class="text-center">Last Name</th>
+        <th scope="col" class="text-center">Birth Date</th>
+        <th scope="col" class="text-center">Age</th>
+        <th scope="col" class="text-center"></th>
     </tr>
 
     <% @players.each do |p| %>

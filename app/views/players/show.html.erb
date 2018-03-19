@@ -1,14 +1,117 @@
 <p>
-    <strong>First Name:</strong>
-    <%= @player.first_name %>
+  <%= image_tag("https://nhl.bamcontent.com/images/headshots/current/60x60/#{params["id"].split("-")[1]}.jpg", :class => 'leaf-img') %>
+  <h5><%= params["id"].split("-")[0] %></h5>
 </p>
 
-<p>
-    <strong>Last Name:</strong>
-    <%= @player.last_name %>
-</p>
+<table class='leafs'>
+  <tr>
+    <th>Date</th>
+    <th>Opponent</th>
+    <th>G</th>
+    <th>A</th>
+    <th>P</th>
+    <th>+/-</th>
+    <th>PIM</th>
+    <th>PPG</th>
+    <th>PPP</th>
+    <th>SHG</th>
+    <th>SHP</th>
+    <th>GWG</th>
+    <th>OTG</th>
+    <th>S</th>
+    <th>TOI</th>
+    <th>Shifts</th>
+  </tr>
+  <% @gp = 0 %>
+  <% @goals = 0 %>
+  <% @assists = 0 %>
+  <% @plus_minus = 0 %>
+  <% @pim = 0 %>
+  <% @ppg = 0 %>
+  <% @ppp = 0 %>
+  <% @shg = 0 %>
+  <% @shp = 0 %>
+  <% @gwg = 0 %>
+  <% @otg = 0 %>
+  <% @shots = 0 %>
+  <% @stats.map do |gl| %>
 
-<p>
-    <strong>Birth Date:</strong>
-    <%= @player.born_on %>
-</p>
+    <% @game_goals = gl["stat"]["goals"] %>
+    <% @game_assists = gl["stat"]["assists"] %>
+    <% @game_plus_minus = gl["stat"]["plusMinus"] %>
+    <% @game_pim = gl["stat"]["pim"] %>
+    <% @game_ppg = gl["stat"]["powerPlayGoals"] %>
+    <% @game_ppp = gl["stat"]["powerPlayPoints"] %>
+    <% @game_shg = gl["stat"]["shortHandedGoals"] %>
+    <% @game_shp = gl["stat"]["shortHandedPoints"] %>
+    <% @game_gwg = gl["stat"]["gameWinningGoals"] %>
+    <% @game_otg = gl["stat"]["overTimeGoals"] %>
+    <% @game_shots = gl["stat"]["shots"] %>
+
+    <% @gp += 1 %>
+    <% @goals += @game_goals %>
+    <% @assists += @game_assists %>
+    <% @plus_minus += @game_plus_minus %>
+    <% @pim += @game_pim %>
+    <% @ppg += @game_ppg %>
+    <% @ppp += @game_ppp %>
+    <% @shg += @game_shg %>
+    <% @shp += @game_shp %>
+    <% @gwg += @game_gwg %>
+    <% @otg += @game_otg %>
+    <% @shots += @game_shots %>
+    <tr>
+      <td><%= date(gl["date"]) %></td>
+      <td><%= gl["isHome"]? "vs" : "@"%> <%= gl["opponent"]["name"] %></td>
+      <td><%= @game_goals %></td>
+      <td><%= @game_assists %></td>
+      <td><%= gl["stat"]["points"] %></td>
+      <td><%= @game_plus_minus %></td>
+      <td><%= @game_pim %></td>
+      <td><%= @game_ppg %></td>
+      <td><%= @game_ppp %></td>
+      <td><%= @game_shg %></td>
+      <td><%= @game_shp %></td>
+      <td><%= @game_gwg %></td>
+      <td><%= @game_otg %></td>
+      <td><%= @game_shots %></td>
+      <td><%= gl["stat"]["timeOnIce"] %></td>
+      <td><%= gl["stat"]["shifts"] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table class="leafs">
+  <tr>
+    <th>GP</th>
+    <th>G</th>
+    <th>A</th>
+    <th>P</th>
+    <th>+/-</th>
+    <th>PIM</th>
+    <th>PPG</th>
+    <th>PPP</th>
+    <th>SHG</th>
+    <th>SHP</th>
+    <th>GWG</th>
+    <th>OTG</th>
+    <th>S</th>
+  </tr>
+  <tr>
+    <td><%= @gp %></td>
+    <td><%= @goals %></td>
+    <td><%= @assists %></td>
+    <td><%= @goals + @assists %></td>
+    <td><%= @plus_minus %></td>
+    <td><%= @pim %></td>
+    <td><%= @ppg %></td>
+    <td><%= @ppp %></td>
+    <td><%= @shg %></td>
+    <td><%= @shp %></td>
+    <td><%= @gwg %></td>
+    <td><%= @otg %></td>
+    <td><%= @shots %></td>
+  </tr>
+</table>
+
+<%= link_to 'Back', my_teams_path %>

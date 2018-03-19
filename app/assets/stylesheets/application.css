@@ -16,37 +16,41 @@
 /*Application CSS*/
 #main-container {
     margin-top: 50px;
+    text-align: center;
+}
+img {
+  display: block;
+  margin: auto;
 }
 .alert {
   margin-top: 13px;
 }
 /* Leafs table */
-#leafs {
+.leafs {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-top: 50px;
 }
 
-#leafs td, #leafs th {
+.leaf-img {
+  border-radius: 60px;
+  border: 2px solid #a7a7a7;
+}
+.leafs td, .leafs th {
     border: 1px solid #ddd;
-    padding: 8px;
 }
 
-#leafs tr:nth-child(even){background-color: #f2f2f2;}
+.leafs tr:nth-child(even){background-color: #f2f2f2;}
 
-#leafs tr:hover {background-color: #ddd;}
+.leafs tr:hover {background-color: #ddd;}
 
-#leafs th {
+.leafs th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #003777;
     color: white;
-}
-/* DEVISE FORM */
-.devise_form {
-    padding: 10% 30%;
 }
 
 /*NAVBAR*/
@@ -60,6 +64,7 @@ ul.topnav {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 10;
     width: 100%;
 }
 
@@ -80,7 +85,7 @@ ul.topnav li active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
 
-@media screen and (max-width: 600px){
+/* @media screen and (max-width: 600px){
     ul.topnav li.right,
     ul.topnav li {float: none;}
-}
+} */

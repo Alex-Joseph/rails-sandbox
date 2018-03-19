@@ -1,0 +1,29 @@
+<h1>Listing My Teams</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">Team</th>
+      <th scope="col" class="text-center">League</th>
+      <th scope="col" class="text-center"></th>
+      <th scope="col" class="text-center"></th>
+      <th scope="col" class="text-center"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_teams.each do |my_team| %>
+      <tr>
+        <td><%= my_team.team_id.split("-")[0] %></td>
+        <td><%= my_team.league %></td>
+        <td><%= link_to 'Show', my_team %></td>
+        <td><%= link_to 'Edit', edit_my_team_path(my_team) %></td>
+        <td><%= link_to 'Delete', my_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add team', new_my_team_path %>

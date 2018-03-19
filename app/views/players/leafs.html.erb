@@ -1,4 +1,4 @@
-<table id='leafs'>
+<table class='leafs'>
     <tr>
         <th>Name</th>
         <th>Status</th>
@@ -10,7 +10,7 @@
         <th>Birth Place</th>
         <th>Draft</th>
     </tr>
-<% @players.map do |p| %>    
+<% @players.map do |p| %>
     <tr>
         <td><%= p['full_name'] %></td>
         <td><%= status(p['status']) %></td>
@@ -20,7 +20,7 @@
         <td><%= p['jersey_number'] %></td>
         <td><%= p['handedness'] %></td>
         <td><%= p['birth_place'] %></td>
-        
+
         <% if p['draft'] %>
             <td><%= draft(p['draft']) %></td>
         <% else %>

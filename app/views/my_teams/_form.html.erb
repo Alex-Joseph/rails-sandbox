@@ -1,0 +1,25 @@
+<%= form_for @my_team do |f| %>
+  <% if @my_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@my_team.errors.count, "error") %> prohibited this my_team from being saved:</h2>
+
+      <ul>
+      <% @my_team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %><br>
+    <%= select_tag(:team_id, options_for_select(@all_teams)) %>
+  </div>
+  <div class="field">
+    <%= f.label :league %><br>
+    <%= select_tag(:league, options_for_select([["NHL"]])) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
