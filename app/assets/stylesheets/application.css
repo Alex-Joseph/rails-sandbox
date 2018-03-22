@@ -15,15 +15,16 @@
  */
 /*Application CSS*/
 #main-container {
-    margin-top: 50px;
-    text-align: center;
+  text-align: center;
 }
 img {
   display: block;
   margin: auto;
 }
-.alert {
-  margin-top: 13px;
+
+#btn-primary {
+  color: #fff;
+  text-decoration: none;
 }
 /* Leafs table */
 .leafs {
@@ -34,7 +35,7 @@ img {
 }
 
 .leaf-img {
-  border-radius: 60px;
+  border-radius: 100%;
   border: 2px solid #a7a7a7;
 }
 .leafs td, .leafs th {
@@ -54,6 +55,9 @@ img {
 }
 
 /*NAVBAR*/
+.navbar {
+  height: 45px;
+}
 
 ul.topnav {
     list-style-type: none;
@@ -84,8 +88,3 @@ ul.topnav li a:hover:not(.active) {background-color: #111;}
 ul.topnav li active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
-
-/* @media screen and (max-width: 600px){
-    ul.topnav li.right,
-    ul.topnav li {float: none;}
-} */

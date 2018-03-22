@@ -5,36 +5,29 @@ class MyTeamsController < ApplicationController
   # GET /my_teams
   # GET /my_teams.json
   def index
-    @my_teams = MyTeam.all
-  end
+    sql = "SELECT my_teams.id, my_teams.league, my_teams.team_id, teams.name FROM my_teams INNER JOIN teams ON teams.id = my_teams.team_id;"
+    @my_teams = MyTeam.find_by_sql(sql)
 
-  def getAllTeams
-    response = RestClient.get('https://statsapi.web.nhl.com/api/v1/teams/')
-    all_teams = JSON.parse(response)["teams"]
-    @all_teams = []
-    all_teams.map do |t|
-      @all_teams.push(["#{t["name"]}", "#{t["name"]}-#{t["id"]}"])
-    end
-    @all_teams
   end
 
   # GET /my_teams/1
   # GET /my_teams/1.json
   def show
-    id = @my_team.team_id.split("-")[1]
-    roster = RestClient.get("https://statsapi.web.nhl.com/api/v1/teams/#{id}/roster")
+    @id = @my_team.team_id
+    @team_name = Teams.find(@id)
+    roster = RestClient.get("https://statsapi.web.nhl.com/api/v1/teams/#{@id}/roster")
     @roster = JSON.parse(roster)["roster"]
   end
 
   # GET /my_teams/new
   def new
     @my_team = MyTeam.new
-    @all_teams = getAllTeams
+    @all_teams = get_all_teams
   end
 
   # GET /my_teams/1/edit
   def edit
-    @all_teams = getAllTeams
+    @all_teams = get_all_teams
   end
 
   # POST /my_teams
@@ -86,5 +79,14 @@ class MyTeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def my_team_params
       params.permit(:team_id, :league)
+    end
+
+    def get_all_teams
+      teams = Teams.all
+      @all_teams = []
+      teams.map do |t|
+        @all_teams << [t.name, t.id]
+      end
+      @all_teams
     end
 end

@@ -1,11 +1,10 @@
+<br>
 <%= image_tag("leafs.jpeg") %>
 
-
-<%= link_to "New player", new_player_path %>
-
 <% if @players.empty? %>
-
-<h2>No players, please enter a player</h2>
+<br>
+<h5>No players, click below to add a player</h5>
+<%= link_to "New player", new_player_path, class: "btn btn-primary" %>
 
 <% else %>
 
@@ -30,5 +29,6 @@
     </tr>
     <% end %>
 </table>
+<%= link_to "New player", new_player_path, class: "btn btn-primary" %>
 
 <% end %>

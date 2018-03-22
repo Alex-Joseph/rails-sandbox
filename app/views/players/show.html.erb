@@ -1,40 +1,44 @@
-<p>
-  <%= image_tag("https://nhl.bamcontent.com/images/headshots/current/60x60/#{params["id"].split("-")[1]}.jpg", :class => 'leaf-img') %>
-  <h5><%= params["id"].split("-")[0] %></h5>
-</p>
+<% @bg_image = "https://nhl.bamcontent.com/images/actionshots/#{@id}.jpg" %>
+<div class="player-profile" style="background-image: url(<%= @bg_image %>);">
+    <%= image_tag("https://nhl.bamcontent.com/images/headshots/current/168x168/#{@id}.jpg", :class => 'leaf-img') %>
+</div>
+<br><br>
+<h3><%= @name %></h3>
+<h5><%= @position %></h5>
 
-<table class='leafs'>
-  <tr>
-    <th>Date</th>
-    <th>Opponent</th>
-    <th>G</th>
-    <th>A</th>
-    <th>P</th>
-    <th>+/-</th>
-    <th>PIM</th>
-    <th>PPG</th>
-    <th>PPP</th>
-    <th>SHG</th>
-    <th>SHP</th>
-    <th>GWG</th>
-    <th>OTG</th>
-    <th>S</th>
-    <th>TOI</th>
-    <th>Shifts</th>
-  </tr>
-  <% @gp = 0 %>
-  <% @goals = 0 %>
-  <% @assists = 0 %>
-  <% @plus_minus = 0 %>
-  <% @pim = 0 %>
-  <% @ppg = 0 %>
-  <% @ppp = 0 %>
-  <% @shg = 0 %>
-  <% @shp = 0 %>
-  <% @gwg = 0 %>
-  <% @otg = 0 %>
-  <% @shots = 0 %>
-  <% @stats.map do |gl| %>
+<div class="container">
+  <table class='leafs'>
+    <tr>
+      <th>Date</th>
+      <th>Opponent</th>
+      <th>G</th>
+      <th>A</th>
+      <th>P</th>
+      <th>+/-</th>
+      <th>PIM</th>
+      <th>PPG</th>
+      <th>PPP</th>
+      <th>SHG</th>
+      <th>SHP</th>
+      <th>GWG</th>
+      <th>OTG</th>
+      <th>S</th>
+      <th>TOI</th>
+      <th>Shifts</th>
+    </tr>
+    <% @gp = 0 %>
+    <% @goals = 0 %>
+    <% @assists = 0 %>
+    <% @plus_minus = 0 %>
+    <% @pim = 0 %>
+    <% @ppg = 0 %>
+    <% @ppp = 0 %>
+    <% @shg = 0 %>
+    <% @shp = 0 %>
+    <% @gwg = 0 %>
+    <% @otg = 0 %>
+    <% @shots = 0 %>
+    <% @stats.map do |gl| %>
 
     <% @game_goals = gl["stat"]["goals"] %>
     <% @game_assists = gl["stat"]["assists"] %>
@@ -78,40 +82,41 @@
       <td><%= gl["stat"]["timeOnIce"] %></td>
       <td><%= gl["stat"]["shifts"] %></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
 
-<table class="leafs">
-  <tr>
-    <th>GP</th>
-    <th>G</th>
-    <th>A</th>
-    <th>P</th>
-    <th>+/-</th>
-    <th>PIM</th>
-    <th>PPG</th>
-    <th>PPP</th>
-    <th>SHG</th>
-    <th>SHP</th>
-    <th>GWG</th>
-    <th>OTG</th>
-    <th>S</th>
-  </tr>
-  <tr>
-    <td><%= @gp %></td>
-    <td><%= @goals %></td>
-    <td><%= @assists %></td>
-    <td><%= @goals + @assists %></td>
-    <td><%= @plus_minus %></td>
-    <td><%= @pim %></td>
-    <td><%= @ppg %></td>
-    <td><%= @ppp %></td>
-    <td><%= @shg %></td>
-    <td><%= @shp %></td>
-    <td><%= @gwg %></td>
-    <td><%= @otg %></td>
-    <td><%= @shots %></td>
-  </tr>
-</table>
-
-<%= link_to 'Back', my_teams_path %>
+  <table class="leafs">
+    <tr>
+      <th>GP</th>
+      <th>G</th>
+      <th>A</th>
+      <th>P</th>
+      <th>+/-</th>
+      <th>PIM</th>
+      <th>PPG</th>
+      <th>PPP</th>
+      <th>SHG</th>
+      <th>SHP</th>
+      <th>GWG</th>
+      <th>OTG</th>
+      <th>S</th>
+    </tr>
+    <tr>
+      <td><%= @gp %></td>
+      <td><%= @goals %></td>
+      <td><%= @assists %></td>
+      <td><%= @goals + @assists %></td>
+      <td><%= @plus_minus %></td>
+      <td><%= @pim %></td>
+      <td><%= @ppg %></td>
+      <td><%= @ppp %></td>
+      <td><%= @shg %></td>
+      <td><%= @shp %></td>
+      <td><%= @gwg %></td>
+      <td><%= @otg %></td>
+      <td><%= @shots %></td>
+    </tr>
+  </table>
+  <br>
+  <%= link_to 'Back', my_teams_path %>
+<div>

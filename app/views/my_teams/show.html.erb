@@ -1,7 +1,6 @@
-
+<br>
 <p>
-  <strong>Team:</strong>
-  <%= @my_team.team_id.split("-")[0] %>
+  <h5><%= @team_name.name %></h5>
 </p>
 
 <p>
@@ -22,7 +21,7 @@
     <% @player_name = p["person"]['fullName'] %>
       <tr>
           <td><%= image_tag("https://nhl.bamcontent.com/images/headshots/current/60x60/#{@player_id}.jpg", :class => 'leaf-img') %></td>
-          <td><%= link_to @player_name, controller: "players", action: "show", id: "#{@player_name}-#{@player_id}" %></td>
+          <td><%= link_to @player_name, controller: "players", action: "show", id: "#{@player_name}/#{p['position']["name"]}/#{@player_id}" %></td>
           <td><%= p['jerseyNumber'] %></td>
           <td><%= p['position']["name"] %></td>
       </tr>

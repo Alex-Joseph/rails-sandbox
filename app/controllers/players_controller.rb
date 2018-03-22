@@ -37,11 +37,11 @@ class PlayersController < ApplicationController
 
     def status(stat)
         if stat['injuries']
-            return stat['injuries'][0][status]
+          return stat['injuries'][0][status]
         elsif stat == 'ACT'
-            return 'Active'
+          return 'Active'
         else
-            return stat
+          return stat
         end
     end
     helper_method :status
@@ -62,8 +62,11 @@ class PlayersController < ApplicationController
 
     def show
       @current_year = Time.new.year
-      id = params[:id].split("-")[1]
-      stats = RestClient.get("https://statsapi.web.nhl.com/api/v1/people/#{id}/stats?stats=gameLog&season=#{@current_year-1}#{@current_year}")
+      p = params[:id].split("/")
+      @name = p[0]
+      @position = p[1]
+      @id = p[2]
+      stats = RestClient.get("https://statsapi.web.nhl.com/api/v1/people/#{@id}/stats?stats=gameLog&season=#{@current_year-1}#{@current_year}")
       @stats = JSON.parse(stats)["stats"][0]["splits"]
     end
 
