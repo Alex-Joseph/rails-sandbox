@@ -1,0 +1,113 @@
+<% @bg_image = "https://nhl.bamcontent.com/images/actionshots/#{@id}.jpg" %>
+<div class="player-profile" style="background-image: url(<%= @bg_image %>);">
+    <%= image_tag("https://nhl.bamcontent.com/images/headshots/current/168x168/#{@id}.jpg", :class => 'leaf-img') %>
+</div>
+<br><br>
+<h3><%= @name %></h3>
+<h5><%= @position %></h5>
+
+<div class="container">
+  <table class='leafs'>
+    <tr>
+      <th>Date</th>
+      <th>Opponent</th>
+      <th>Decision</th>
+      <th>GA</th>
+      <th>SA</th>
+      <th>S</th>
+      <th>S%</th>
+      <th>SO</th>
+      <th>TOI</th>
+      <th>GP</th>
+      <th>GS</th>
+      <th>OT</th>
+    </tr>
+
+    <% @wins = 0 %>
+    <% @losses = 0 %>
+    <% @goals_against = 0 %>
+    <% @shots_against = 0 %>
+    <% @saves = 0 %>
+    <% @save_percentage = 0 %>
+    <% @shutouts = 0 %>
+    <% @time_on_ice = 0 %>
+    <% @games_played = 0 %>
+    <% @games_started = 0 %>
+    <% @ot = 0 %>
+
+    <% @stats.map do |gl| %>
+
+    <% @decision = gl["stat"]["decision"] %>
+    <% @game_ga = gl["stat"]["goalsAgainst"] %>
+    <% @game_sa = gl["stat"]["shotsAgainst"] %>
+    <% @game_s = gl["stat"]["saves"] %>
+    <% @game_sp = gl["stat"]["savePercentage"] %>
+    <% @game_so = gl["stat"]["shutouts"] %>
+    <% @game_toi = (gl["stat"]['timeOnIce']).to_i %>
+    <% @game_played = gl["stat"]["games"] %>
+    <% @game_started = gl["stat"]["gamesStarted"] %>
+    <% @game_ot = gl["stat"]["ot"] %>
+
+    <% if @decision == "W" %>
+    <% @wins += 1 %>
+    <% elsif @decision == "L" %>
+    <% @losses += 1 %>
+    <% end %>
+    <% @goals_against += @game_ga %>
+    <% @shots_against += @game_sa %>
+    <% @saves += @game_s %>
+    <% @save_percentage += @game_sp %>
+    <% @shutouts += @game_so %>
+    <% @time_on_ice += @game_toi %>
+    <% @games_played += @game_played %>
+    <% @games_started += @game_started ? @game_started : 0 %>
+    <% @ot += @game_ot %>
+
+    <tr>
+      <td><%= date(gl["date"]) %></td>
+      <td><%= gl["isHome"]? "vs" : "@"%> <%= gl["opponent"]["name"] %></td>
+      <td><%= @decision %></td>
+      <td><%= @game_ga %></td>
+      <td><%= @game_sa %></td>
+      <td><%= @game_s %></td>
+      <td><%= @game_sp %></td>
+      <td><%= @game_so %></td>
+      <td><%= @game_toi %></td>
+      <td><%= @game_played %></td>
+      <td><%= @game_started %></td>
+      <td><%= @game_ot %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <table class="leafs">
+    <tr>
+      <th>GP</th>
+      <th>GS</th>
+      <th>W</th>
+      <th>L</th>
+      <th>OT</th>
+      <th>SA</th>
+      <th>GA</th>
+      <th>GAA</th>
+      <th>SV%</th>
+      <th>SO</th>
+      <th>MIN</th>
+    </tr>
+    <tr>
+      <td><%= @games_played %></td>
+      <td><%= @games_started %></td>
+      <td><%= @wins %></td>
+      <td><%= @losses %></td>
+      <td><%= @ot %></td>
+      <td><%= @shots_against %></td>
+      <td><%= @goals_against %></td>
+      <td><%= @goals_against / @games_played %></td>
+      <td><%= (@save_percentage / @games_played).round(3) %></td>
+      <td><%= @shutouts %></td>
+      <td><%= @time_on_ice %></td>
+    </tr>
+  </table>
+  <br>
+  <%= link_to 'Back', my_teams_path %>
+<div>

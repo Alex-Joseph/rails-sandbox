@@ -68,6 +68,9 @@ class PlayersController < ApplicationController
       @id = p[2]
       stats = RestClient.get("https://statsapi.web.nhl.com/api/v1/people/#{@id}/stats?stats=gameLog&season=#{@current_year-1}#{@current_year}")
       @stats = JSON.parse(stats)["stats"][0]["splits"]
+      if @position === "Goalie"
+        render :show_goalie_stats
+      end
     end
 
     def new

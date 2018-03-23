@@ -7,7 +7,6 @@ class MyTeamsController < ApplicationController
   def index
     sql = "SELECT my_teams.id, my_teams.league, my_teams.team_id, teams.name FROM my_teams INNER JOIN teams ON teams.id = my_teams.team_id;"
     @my_teams = MyTeam.find_by_sql(sql)
-
   end
 
   # GET /my_teams/1
