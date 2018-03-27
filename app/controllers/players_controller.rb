@@ -1,25 +1,7 @@
 class PlayersController < ApplicationController
-    require 'uri'
-    require 'net/http'
-    require 'openssl'
 
     def index
         @players = Player.all
-    end
-
-    def leafs
-        url = URI("https://api.sportradar.us/nhl/trial/v5/en/teams/441730a9-0f24-11e2-8525-18a905767e44/profile.json?api_key=qs5r85k6mjz8g9gxjjvjgksg")
-
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-        request = Net::HTTP::Get.new(url)
-
-        response = http.request(request)
-        @tml = response.read_body
-        @p_tml = JSON.parse(@tml)
-        @players = @p_tml['players']
     end
 
     def age(dob)
