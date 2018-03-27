@@ -1,0 +1,172 @@
+/* line 4, /home/alex/Documents/sports-app/app/assets/stylesheets/articles.scss */
+#map {
+  margin: auto;
+  height: 400px;
+  width: 400px;
+}
+/* line 4, /home/alex/Documents/sports-app/app/assets/stylesheets/players.scss */
+.player-profile {
+  height: 500px;
+  color: #fff;
+  padding-top: 275px;
+  font-size: 30px;
+  font-weight: bold;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 1, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 35, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 40, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 44, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 50, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 58, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 69, /home/alex/Documents/sports-app/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/*Application CSS*/
+
+#main-container {
+  text-align: center;
+}
+img {
+  display: block;
+  margin: auto;
+}
+
+#btn-primary {
+  color: #fff;
+  text-decoration: none;
+}
+/* Leafs table */
+.leafs {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.leaf-img {
+  border-radius: 100%;
+  border: 2px solid #a7a7a7;
+}
+.leafs td, .leafs th {
+    border: 1px solid #ddd;
+}
+
+.leafs tr:nth-child(even){background-color: #f2f2f2;}
+
+.leafs tr:hover {background-color: #ddd;}
+
+.leafs th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #003777;
+    color: white;
+}
+
+/*NAVBAR*/
+.navbar {
+  height: 45px;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
