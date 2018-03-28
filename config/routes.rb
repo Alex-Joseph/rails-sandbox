@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+    # error pages
+   %w( 404 422 500 503 ).each do |code|
+     get code, :to => "errors#show", :code => code
+   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
